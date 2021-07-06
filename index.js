@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 
   // Be sure to update with your own MySQL password!
   password: 'root',
-  database: 'top_songsDB',
+  database: 'employeeDB',
 });
 
 connection.connect((err) => {
@@ -26,61 +26,67 @@ function init() {
     loadTrackingPrompts();
 }
 
-async function loadTrackingPrompts() {
-    const { choice } = await prompt([
-        {
+//Prompts for user
+const loadTrackingPrompts = () => {
+    inquirer
+        .prompt( {
             type: "list",
             name: "choice",
             message: "What would you like to do?",
             choices: [
-                {
-                    name: "View all employees",
-                    value: "VIEW_EMPLOYEES"
-                },
-                {
-                    name:"Add Employee",
-                    value: "ADD_EMPLOYEE"
-                },
-                {
-                    NAME:"Remove Employee",
-                    value: "REMOVE_EMPLOYEE"
-                },
-                {
-                    name: "Update Employee Role",
-                    value: "UPDATE_EMPLOYEE_ROLE"
-                  },
-                  {
-                    name: "View All Roles",
-                    value: "VIEW_ROLES"
-                  },
-                  {
-                    name: "Add Role",
-                    value: "ADD_ROLE"
-                  },
-                  {
-                    name: "Remove Role",
-                    value: "REMOVE_ROLE"
-                  },
-                  {
-                    name: "View All Departments",
-                    value: "VIEW_DEPARTMENTS"
-                  },
-                  {
-                    name: "Add Department",
-                    value: "ADD_DEPARTMENT"
-                  },
-                  {
-                    name: "Remove Department",
-                    value: "REMOVE_DEPARTMENT"
-                  },
-                  {
-                    name: "Quit",
-                    value: "QUIT"
-                  }
+                'View all employees',
+                'Add a new employee',
+                'Update an employee role',
+                'Remove an employee',
+                new inquirer.Separator(),
+                'View all roles',
+                'Add a new role',
+                'Remove a role',
+                new inquirer.Separator(),
+                'View all departments',
+                'Add a new department',
+                'Remove a department',               
+                new inquirer.Separator(),
+                'Exit',
+                new inquirer.Separator()
                 ]
-              }
-            ]);
+              })
 
+        //Calling the corresponding functions based on user choice
+        then((answer) => {
+            switch(answer.action) {
+                case 'View all employees':
+                    viewEmployees();
+                    break;
+                case 'Add a new employee':
+                    addEmployee();
+                    break;
+                case 'Update an employee role':
+                    updateRole();
+                    break;
+                case 'Remove an employee':
+                    removeEmployee();
+                    break;
+                case 'View all roles':
+                    viewRoles();
+                    break;
+                case 'Add a new role':
+                    addRole();
+                    break;
+                case 'Remove a role':
+                    removeRole();
+                    break;
+                case 'View all departments':
+                    viewDepartments();
+                    break;
+                case 'Add a new department':
+                    addDepartment();
+                    break;
+                case 'Remove a department':
+                    removerDepartment();
+                    break;   
+            }
+        })
 
 }
  
