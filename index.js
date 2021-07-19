@@ -288,6 +288,7 @@ async function viewDepartments() {
   const viewDepartmentData = await db.viewDepartments();
 
   console.table(viewDepartmentData);
+  loadPrompts();
 }
 
 //function to add a department
