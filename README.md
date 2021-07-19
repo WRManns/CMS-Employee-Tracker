@@ -12,7 +12,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-
+- [Walkthrough](#walkthrough)
 - [Contirbuting](#collaborators)
 - [GitHub](#github)
 - [Tests](#tests)
@@ -30,7 +30,9 @@
 
     After 'npm install', user would simply want to run an 'npm start' from the terminal to begin.
 
-    
+    ## Walkthrough
+
+    ![Walkthrough_Gif](./Assets/walkthrough.gif) / ! [](./Assets/walkthrough.gif))
 
     ## Test
 
